@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         清洗url
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @description  移除url中冗余的查询参数
 // @author       Smile
-// @run-at       document-start
+// @run-at       document-idle
 // @match        https://mp.weixin.qq.com/*
 // @match        https://www.zhihu.com/*
 // @match        https://www.bilibili.com/*
@@ -30,6 +30,25 @@
       removeKeys: ['spm_id_from'],
       removeHash: false,
     },
+    'www.bilibili.com': {
+      removeKeys: [
+        'buvid',
+        'is_story_h5',
+        'mid',
+        'p',
+        'plat_id',
+        'share_from',
+        'share_medium',
+        'share_plat',
+        'share_session_id',
+        'share_source',
+        'share_tag',
+        'timestamp',
+        'unique_k',
+        'up_id',
+        'vd_source',
+      ],
+    },
   };
 
   const { href, host } = location;
@@ -53,6 +72,8 @@
 
   const newHref = newUrl.toString();
   if (newHref !== href) {
-    location.href = newHref;
+    setTimeout(() => {
+      history.replaceState(null, '', newHref);
+    }, 4000);
   }
 })();
