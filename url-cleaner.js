@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      0.5
 // @description  移除url中冗余的查询参数
-// @author       Smile
+// @author       微笑
 // @run-at       document-idle
 // @match        https://mp.weixin.qq.com/*
 // @match        https://www.zhihu.com/*
@@ -11,7 +11,7 @@
 // @match        https://space.bilibili.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=qq.com
 // @grant        none
-// @license MIT
+// @license      MIT
 // ==/UserScript==
 
 (function () {
