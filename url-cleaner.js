@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         清洗url
 // @namespace    http://tampermonkey.net/
-// @version      0.5
+// @version      0.6
 // @description  移除url中冗余的查询参数
 // @author       微笑
 // @run-at       document-idle
@@ -47,6 +47,7 @@
         'unique_k',
         'up_id',
         'vd_source',
+        'spm_id_from',
       ],
     },
   };
