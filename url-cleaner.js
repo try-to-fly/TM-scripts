@@ -1,14 +1,13 @@
 // ==UserScript==
 // @name         清洗url
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.7
 // @description  移除url中冗余的查询参数
 // @author       微笑
 // @run-at       document-idle
 // @match        https://mp.weixin.qq.com/*
 // @match        https://www.zhihu.com/*
-// @match        https://www.bilibili.com/*
-// @match        https://space.bilibili.com/*
+// @match        https://*.bilibili.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=qq.com
 // @grant        none
 // @license      MIT
@@ -26,8 +25,12 @@
       removeKeys: ['utm_medium', 'utm_oi', 'utm_source'],
       removeHash: false,
     },
+    'search.bilibili.com': {
+      removeKeys: ['spm_id_from', 'from_source', 'search_source', 'vt'],
+      removeHash: false,
+    },
     'space.bilibili.com': {
-      removeKeys: ['spm_id_from'],
+      removeKeys: ['spm_id_from', 'from_source', 'search_source'],
       removeHash: false,
     },
     'www.bilibili.com': {
