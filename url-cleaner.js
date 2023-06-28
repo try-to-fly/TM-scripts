@@ -75,6 +75,13 @@
   if (newHref !== href) {
     setTimeout(() => {
       history.replaceState(null, '', newHref);
-    }, 4000);
+    }, 3000);
+  }
+
+  if (host === 'www.bilibili.com') {
+    const adDom = document.querySelector('.adblock-tips');
+    if (adDom) {
+      adDom.remove();
+    }
   }
 })();
