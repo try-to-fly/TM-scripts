@@ -1,13 +1,14 @@
 // ==UserScript==
 // @name         清洗url
 // @namespace    http://tampermonkey.net/
-// @version      0.7
+// @version      0.8
 // @description  移除url中冗余的查询参数
 // @author       微笑
 // @run-at       document-idle
 // @match        https://mp.weixin.qq.com/*
 // @match        https://www.zhihu.com/*
 // @match        https://*.bilibili.com/*
+// @match        https://github.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=qq.com
 // @grant        none
 // @license      MIT
@@ -52,6 +53,9 @@
         'vd_source',
         'spm_id_from',
       ],
+    },
+    'github.com': {
+      removeKeys: ['ref'],
     },
   };
 
