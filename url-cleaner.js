@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         清洗url
 // @namespace    http://tampermonkey.net/
-// @version      0.8
+// @version      0.9
 // @description  移除url中冗余的查询参数
 // @author       微笑
 // @run-at       document-idle
@@ -9,6 +9,7 @@
 // @match        https://www.zhihu.com/*
 // @match        https://*.bilibili.com/*
 // @match        https://github.com/*
+// @match        https://*.aliyun.com/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=qq.com
 // @grant        none
 // @license      MIT
@@ -59,6 +60,8 @@
     },
   };
 
+  const defaultRemoveKeys = ['spm'];
+
   const { href, host } = location;
   const newUrl = new URL(href);
 
@@ -69,10 +72,9 @@
   };
 
   const configForCurrentDomain = domainConfig[host];
+  removeParams(configForCurrentDomain?.removeKeys || defaultRemoveKeys);
 
   if (configForCurrentDomain) {
-    removeParams(configForCurrentDomain.removeKeys);
-
     if (configForCurrentDomain.removeHash) {
       newUrl.hash = '';
     }
